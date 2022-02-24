@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net45;netstandard1.3;netstandard2.0;net6.0;net8.0</TargetFrameworks>
+		<RootNamespace>Org.PkiLib.NodaTime</RootNamespace>
+		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
+		<Version>0.1.0</Version>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<PackageId>PkiLib.NodaTime</PackageId>
+		<PackageVersion>$(Version)</PackageVersion>
+		<Company>PkiLib.org</Company>
+		<Authors>Alexey Igin</Authors>
+		<Description>NodaTime additional classes</Description>
+		<Copyright>Copyright © 2022 Alexey Igin</Copyright>
+		<PackageProjectUrl>https://github.com/pkilib/PkiLib.NodaTime</PackageProjectUrl>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/pkilib/PkiLib.NodaTime.git</RepositoryUrl>
+		<!--<SourceRevisionId></SourceRevisionId>-->
+		<IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
+	</PropertyGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net45' or '$(TargetFramework)' == 'netstandard1.3'">
+		<PackageReference Include="NodaTime" Version="2.0.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+		<PackageReference Include="NodaTime" Version="2.4.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+		<PackageReference Include="NodaTime" Version="3.1.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+		<PackageReference Include="NodaTime" Version="3.2.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="JetBrains.Annotations" Version="2021.3.0" PrivateAssets="All" />
+	</ItemGroup>
+
+	<!-- https://stackoverflow.com/questions/15141338/embed-git-commit-hash-in-a-net-dll -->
+	<Target Name="SetSourceRevisionId" BeforeTargets="InitializeSourceControlInformation">
+		<Exec Command="git describe --long --always --dirty --exclude=* --abbrev=7" ConsoleToMSBuild="True" IgnoreExitCode="False">
+			<Output PropertyName="SourceRevisionId" TaskParameter="ConsoleOutput" />
+		</Exec>
+	</Target>
+
+</Project>

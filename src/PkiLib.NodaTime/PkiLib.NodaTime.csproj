@@ -21,6 +21,7 @@
 		<RepositoryUrl>https://github.com/pkilib/PkiLib.NodaTime.git</RepositoryUrl>
 		<!--<SourceRevisionId></SourceRevisionId>-->
 		<IncludeSourceRevisionInInformationalVersion>true</IncludeSourceRevisionInInformationalVersion>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net45' or '$(TargetFramework)' == 'netstandard1.3'">
